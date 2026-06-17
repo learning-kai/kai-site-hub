@@ -2,6 +2,8 @@
 
 Kai Site Hub 是一个 MiMo Code 风格的 Kai 个人站点入口。它保留了原页面的首屏气质，同时把导航链接指向博客、GitHub、图床和 Nextcloud。
 
+English version: [README.md](./README.md)
+
 ![预览图](docs/assets/website.png)
 
 ## 功能

@@ -2,6 +2,8 @@
 
 Kai Site Hub is a MiMo Code-inspired personal portal for Kai. It keeps the landing-page feel of the original design while linking out to the blog, GitHub, image bed, and Nextcloud.
 
+中文版本：[README.zh-CN.md](./README.zh-CN.md)
+
 ![Preview](docs/assets/website.png)
 
 ## Features
