@@ -1,5 +1,6 @@
 {
-  "name": "mimicode-web",
+  "name": "kai-site-hub",
+  "description": "MiMo Code-inspired personal portal for Kai",
   "version": "0.1.0",
   "private": true,
   "type": "module",
