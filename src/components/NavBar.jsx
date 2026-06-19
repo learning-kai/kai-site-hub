@@ -12,6 +12,11 @@ export function NavBar({ lang, links, setLang, t }) {
       id: "navQuestionBank",
       label: t.navQuestionBank,
     },
+    {
+      href: links.review,
+      id: "navReview",
+      label: t.navReview,
+    },
   ];
 
   return (

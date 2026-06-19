@@ -21,6 +21,7 @@ export default function App() {
       imgbed: "https://imgbed.skyhold.cloud/",
       nextcloud: "https://cloud.skyhold.cloud/",
       questionBank: "https://jianyantiku.skyhold.cloud/",
+      review: "https://review.skyhold.cloud/",
     };
   }, []);
 

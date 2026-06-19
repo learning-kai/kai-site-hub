@@ -5,6 +5,7 @@ const GITHUB_URL = "https://github.com/learning-kai";
 const IMGBED_URL = "https://imgbed.skyhold.cloud/";
 const NEXTCLOUD_URL = "https://cloud.skyhold.cloud/";
 const QUESTION_BANK_URL = "https://jianyantiku.skyhold.cloud/";
+const REVIEW_URL = "https://review.skyhold.cloud/";
 const MIMO_URL = "https://mimo.xiaomi.com/zh/mimocode";
 const FEATURE_IMAGES = [
   "/coder/assets/feature-model.png",
@@ -44,9 +45,11 @@ test("wires the public Kai links", async ({ page }) => {
 
   await page.getByText("产品").hover();
   const productMenu = page.locator(".hero__product-menu");
-  await expect(productMenu.getByRole("menuitem")).toHaveCount(1);
+  await expect(productMenu.getByRole("menuitem")).toHaveCount(2);
   await expect(page.locator("#navQuestionBank")).toHaveAttribute("href", QUESTION_BANK_URL);
   await expect(page.locator("#navQuestionBank")).toHaveText("检验题库");
+  await expect(page.locator("#navReview")).toHaveAttribute("href", REVIEW_URL);
+  await expect(page.locator("#navReview")).toHaveText("习概期末");
   await expect(productMenu).toHaveCSS("flex-direction", "row");
 });
 
