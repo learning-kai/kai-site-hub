@@ -1,0 +1,84 @@
+{
+  "home": {
+    "href": "https://blog.skyhold.cloud/"
+  },
+  "items": [
+    {
+      "type": "dropdown",
+      "id": "navProduct",
+      "label": {
+        "zh": "产品",
+        "en": "Product"
+      },
+      "items": [
+        {
+          "type": "link",
+          "id": "navQuestionBank",
+          "href": "https://jianyantiku.skyhold.cloud/",
+          "label": {
+            "zh": "检验题库",
+            "en": "Question bank"
+          }
+        },
+        {
+          "type": "link",
+          "id": "navReview",
+          "href": "https://review.skyhold.cloud/",
+          "label": {
+            "zh": "习概期末",
+            "en": "Xi Thought final"
+          }
+        },
+        {
+          "type": "link",
+          "id": "navmadetiku",
+          "href": "https://self-made-tiku.skyhold.cloud/",
+          "label": {
+            "zh": "自制题库",
+            "en": "self-made-tiku"
+          }
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "id": "navBlog",
+      "href": "https://blog.skyhold.cloud/",
+      "label": {
+        "zh": "博客",
+        "en": "Blog"
+      },
+      "key": "blog"
+    },
+    {
+      "type": "link",
+      "id": "navGithub",
+      "href": "https://github.com/learning-kai",
+      "label": {
+        "zh": "GitHub",
+        "en": "GitHub"
+      },
+      "key": "github"
+    },
+    {
+      "type": "link",
+      "id": "navImgbedTop",
+      "href": "https://imgbed.skyhold.cloud/",
+      "label": {
+        "zh": "我的图床",
+        "en": "Image bed"
+      },
+      "key": "imgbed"
+    },
+    {
+      "type": "link",
+      "id": "navNextcloudTop",
+      "href": "https://cloud.skyhold.cloud/",
+      "label": {
+        "zh": "Nextcloud",
+        "en": "Nextcloud"
+      },
+      "key": "nextcloud"
+    }
+  ]
+}

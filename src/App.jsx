@@ -3,27 +3,32 @@ import { FeatureSection } from "./components/FeatureSection.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { Hero } from "./components/Hero.jsx";
 import { getInitialLanguage, i18n } from "./i18n.js";
+import navConfig from "./nav.config.json";
+
+function collectNamedLinks(config) {
+  const links = {
+    home: config.home.href,
+  };
+
+  for (const item of config.items) {
+    if (item.type === "link" && item.key) {
+      links[item.key] = item.href;
+    }
+  }
+
+  return links;
+}
 
 export default function App() {
   const [lang, setLang] = useState(getInitialLanguage);
-  const copyText = "https://blog.skyhold.cloud/";
   const t = i18n[lang];
 
   useEffect(() => {
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
   }, [lang]);
 
-  const links = useMemo(() => {
-    return {
-      home: "https://blog.skyhold.cloud/",
-      blog: "https://blog.skyhold.cloud/",
-      github: "https://github.com/learning-kai",
-      imgbed: "https://imgbed.skyhold.cloud/",
-      nextcloud: "https://cloud.skyhold.cloud/",
-      questionBank: "https://jianyantiku.skyhold.cloud/",
-      review: "https://review.skyhold.cloud/",
-    };
-  }, []);
+  const links = useMemo(() => collectNamedLinks(navConfig), []);
+  const copyText = links.home;
 
   return (
     <>
@@ -31,6 +36,7 @@ export default function App() {
         copyText={copyText}
         lang={lang}
         links={links}
+        navConfig={navConfig}
         setLang={setLang}
         t={t}
       />

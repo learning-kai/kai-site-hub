@@ -5,7 +5,7 @@ import { HeroSubtitle } from "./HeroSubtitle.jsx";
 import { NavBar } from "./NavBar.jsx";
 import { TerminalCommand } from "./TerminalCommand.jsx";
 
-export function Hero({ copyText, lang, links, setLang, t }) {
+export function Hero({ copyText, lang, links, navConfig, setLang, t }) {
   const heroRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -25,7 +25,7 @@ export function Hero({ copyText, lang, links, setLang, t }) {
         ref={canvasRef}
       />
 
-      <NavBar lang={lang} links={links} setLang={setLang} t={t} />
+      <NavBar lang={lang} navConfig={navConfig} setLang={setLang} />
 
       <div className="hero__content">
         <div className="hero__heading">

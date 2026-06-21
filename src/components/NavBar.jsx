@@ -5,26 +5,19 @@ const externalLinkProps = {
   target: "_blank",
 };
 
-export function NavBar({ lang, links, setLang, t }) {
-  const productLinks = [
-    {
-      href: links.questionBank,
-      id: "navQuestionBank",
-      label: t.navQuestionBank,
-    },
-    {
-      href: links.review,
-      id: "navReview",
-      label: t.navReview,
-    },
-  ];
+function getLabel(item, lang) {
+  return item.label?.[lang] || item.label?.zh || "";
+}
+
+export function NavBar({ lang, navConfig, setLang }) {
+  const homeHref = navConfig.home.href;
 
   return (
     <>
       <a
         aria-label="Kai"
         className="hero__logo-link hero__wordmark"
-        href={links.home}
+        href={homeHref}
         id="navHome"
         {...externalLinkProps}
       >
@@ -35,61 +28,52 @@ export function NavBar({ lang, links, setLang, t }) {
 
       <div className="hero__bar">
         <nav aria-label="Main navigation" className="hero__nav">
-          <div className="hero__nav-dropdown">
-            <button
-              className="hero__nav-link hero__nav-dropdown-trigger"
-              type="button"
-            >
-              <span>{t.navProduct}</span>
-              <CaretIcon />
-            </button>
-            <div className="hero__nav-menu hero__product-menu" role="menu">
-              {productLinks.map((item) => (
-                <a
-                  className="hero__nav-menu-item"
-                  href={item.href}
-                  id={item.id}
-                  key={item.id}
-                  role="menuitem"
-                  {...externalLinkProps}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-          <a
-            className="hero__nav-link"
-            href={links.blog}
-            id="navBlog"
-            {...externalLinkProps}
-          >
-            {t.navBlog}
-          </a>
-          <a
-            className="hero__nav-link"
-            href={links.github}
-            id="navGithub"
-            {...externalLinkProps}
-          >
-            {t.navGithub}
-          </a>
-          <a
-            className="hero__nav-link"
-            href={links.imgbed}
-            id="navImgbedTop"
-            {...externalLinkProps}
-          >
-            {t.navImgbed}
-          </a>
-          <a
-            className="hero__nav-link"
-            href={links.nextcloud}
-            id="navNextcloudTop"
-            {...externalLinkProps}
-          >
-            {t.navNextcloud}
-          </a>
+          {navConfig.items.map((item) => {
+            if (item.type === "dropdown") {
+              return (
+                <div className="hero__nav-dropdown" key={item.id}>
+                  <button
+                    className="hero__nav-link hero__nav-dropdown-trigger"
+                    id={item.id}
+                    type="button"
+                  >
+                    <span>{getLabel(item, lang)}</span>
+                    <CaretIcon />
+                  </button>
+                  <div
+                    className="hero__nav-menu hero__product-menu"
+                    id={`${item.id}Menu`}
+                    role="menu"
+                  >
+                    {item.items.map((child) => (
+                      <a
+                        className="hero__nav-menu-item"
+                        href={child.href}
+                        id={child.id}
+                        key={child.id}
+                        role="menuitem"
+                        {...externalLinkProps}
+                      >
+                        {getLabel(child, lang)}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <a
+                className="hero__nav-link"
+                href={item.href}
+                id={item.id}
+                key={item.id}
+                {...externalLinkProps}
+              >
+                {getLabel(item, lang)}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="hero__lang hero__nav-dropdown">

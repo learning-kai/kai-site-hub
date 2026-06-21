@@ -1,4 +1,10 @@
 import { expect, test } from "@playwright/test";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+const navConfig = JSON.parse(
+  readFileSync(resolve(import.meta.dirname, "../src/nav.config.json"), "utf8"),
+);
 
 const BLOG_URL = "https://blog.skyhold.cloud/";
 const GITHUB_URL = "https://github.com/learning-kai";
@@ -51,6 +57,30 @@ test("wires the public Kai links", async ({ page }) => {
   await expect(page.locator("#navReview")).toHaveAttribute("href", REVIEW_URL);
   await expect(page.locator("#navReview")).toHaveText("习概期末");
   await expect(productMenu).toHaveCSS("flex-direction", "row");
+});
+
+test("renders the top navigation from the editable config", async ({ page }) => {
+  await openHome(page);
+
+  await expect(page.locator("#navHome")).toHaveAttribute("href", navConfig.home.href);
+
+  for (const item of navConfig.items) {
+    if (item.type === "link") {
+      await expect(page.locator(`#${item.id}`)).toHaveAttribute("href", item.href);
+      await expect(page.locator(`#${item.id}`)).toHaveText(item.label.zh);
+    }
+
+    if (item.type === "dropdown") {
+      await page.getByRole("button", { name: item.label.zh }).hover();
+      const menu = page.locator(`#${item.id}Menu`);
+      await expect(menu.getByRole("menuitem")).toHaveCount(item.items.length);
+
+      for (const child of item.items) {
+        await expect(page.locator(`#${child.id}`)).toHaveAttribute("href", child.href);
+        await expect(page.locator(`#${child.id}`)).toHaveText(child.label.zh);
+      }
+    }
+  }
 });
 
 test("loads the local screenshot assets", async ({ page }) => {

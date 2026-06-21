@@ -1,12 +1,5 @@
 export const i18n = {
   zh: {
-    navProduct: "产品",
-    navBlog: "博客",
-    navGithub: "GitHub",
-    navQuestionBank: "检验题库",
-    navReview: "习概期末",
-    navImgbed: "我的图床",
-    navNextcloud: "Nextcloud",
     heroTitle: "Kai",
     heroSubtitle:
       "Kai 的个人站点入口，集中访问博客、GitHub、图床和 Nextcloud。",
@@ -31,13 +24,6 @@ export const i18n = {
     footerCopyright: "Copyright 2026 Kai. All Rights Reserved",
   },
   en: {
-    navProduct: "Product",
-    navBlog: "Blog",
-    navGithub: "GitHub",
-    navQuestionBank: "Question bank",
-    navReview: "Xi Thought final",
-    navImgbed: "Image bed",
-    navNextcloud: "Nextcloud",
     heroTitle: "Kai",
     heroSubtitle:
       "A personal launchpad for Kai's public web spaces: blog, GitHub, image bed, and Nextcloud.",
