@@ -1,6 +1,6 @@
 {
   "name": "kai-site-hub",
-  "description": "MiMo Code-inspired personal portal for Kai",
+  "description": "A MiMo Code-inspired personal launchpad for Kai's blog, GitHub, image bed, and Nextcloud.",
   "version": "0.1.0",
   "private": true,
   "type": "module",

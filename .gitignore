@@ -4,3 +4,5 @@ test-results/
 playwright-report/
 *.log
 mimocode-local-preview.png
+__pycache__/
+*.py[cod]

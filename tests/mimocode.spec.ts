@@ -50,12 +50,17 @@ test("wires the public Kai links", async ({ page }) => {
   await expect(page.locator("#navNextcloudTop")).toHaveAttribute("href", NEXTCLOUD_URL);
 
   await page.getByText("产品").hover();
+  const productConfig = navConfig.items.find((item) => item.id === "navProduct");
   const productMenu = page.locator(".hero__product-menu");
-  await expect(productMenu.getByRole("menuitem")).toHaveCount(2);
+  await expect(productMenu.getByRole("menuitem")).toHaveCount(productConfig.items.length);
   await expect(page.locator("#navQuestionBank")).toHaveAttribute("href", QUESTION_BANK_URL);
   await expect(page.locator("#navQuestionBank")).toHaveText("检验题库");
   await expect(page.locator("#navReview")).toHaveAttribute("href", REVIEW_URL);
   await expect(page.locator("#navReview")).toHaveText("习概期末");
+  for (const child of productConfig.items) {
+    await expect(page.locator(`#${child.id}`)).toHaveAttribute("href", child.href);
+    await expect(page.locator(`#${child.id}`)).toHaveText(child.label.zh);
+  }
   await expect(productMenu).toHaveCSS("flex-direction", "row");
 });
 
